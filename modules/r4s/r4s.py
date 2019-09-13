@@ -122,7 +122,7 @@ def setMode(child):
     temp        = hex(int(args.temperature))
     mode        = args.mode # 00 - boiling, 01 heat , 03 night light
     howMuchBoil = '80'
-    command = "05" + args.mode + "00" + temp + 'ff' + key + howMuchBoil + "0000"
+    command = "05" + args.mode + "00" + temp + '00000000000000000000' + howMuchBoil + "0000"
     auth(child)
     statusStr = runCommand(child, command)
     meta = {
@@ -141,8 +141,8 @@ def keepTemp(child):
     temp    = hex(int( args.temperature))
     key     = args.key
     #command = "05" + mode + "00" + temp + '01'
-    howMuchBoil = hex(80)
-    command = "05" + '01' + "00" + '80'  + '80' + "00"
+    #howMuchBoil = hex(temp)
+    command = "05" + '00' + '00'+ '00'  + "00"
     #command = '0500002800'
     auth(child)
     statusStr = runCommand(child, command)

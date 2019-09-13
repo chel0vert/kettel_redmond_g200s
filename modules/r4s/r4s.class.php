@@ -325,7 +325,7 @@ function usual(&$out) {
  function run_kettel_command($id, $command){
     $mac = $this->get_device_property($id, 'mac');
     $key = $this->get_device_property($id, 'key');
-    $result = exec("python /var/www/html/modules/r4s/r4s.py --mac='$mac' --command '$command' --key='$key'");
+    $result = exec("python ".DIR_MODULES."/r4s/r4s.py --mac='$mac' --command '$command' --key='$key'");
     $json = json_decode($result, true);
     return $json;
  }
