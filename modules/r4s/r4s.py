@@ -119,7 +119,8 @@ def setMode(child):
     if not args.mode or not args.temperature:
         print json.dumps({'error':'wrong params'})
         raise SystemExit(1)
-    temp        = hex(int(args.temperature))
+#    temp        = hex(int(args.temperature))
+    temp = ('00'+hex(int(args.temperature))[2:])[-2:]
     mode        = args.mode # 00 - boiling, 01 heat , 03 night light
     howMuchBoil = '80'
     command = "05" + args.mode + "00" + temp + '00000000000000000000' + howMuchBoil + "0000"
@@ -138,7 +139,8 @@ def keepTemp(child):
     #temp        = hex(int(args.temperature))
 
     mode    = args.mode # 00 - boiling, 01 heat , 03 night light
-    temp    = hex(int( args.temperature))
+#    temp    = hex(int( args.temperature))
+    temp = ('00'+hex(int(args.temperature))[2:])[-2:]
     key     = args.key
     #command = "05" + mode + "00" + temp + '01'
     #howMuchBoil = hex(temp)
